@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package config;
+
 import java.sql.*;
 
 /**
@@ -11,16 +12,19 @@ import java.sql.*;
  * @author Migue Galdámez
  */
 public class conexion {
+
     Connection con;
-    public conexion(){
+
+    public conexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca","root","");            
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3308/biblioteca", "root", "");
         } catch (Exception e) {
-            System.err.println("Error"+e);
+            System.err.println("Error" + e);
         }
     }
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return con;
     }
 }

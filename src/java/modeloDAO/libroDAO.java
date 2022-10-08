@@ -18,21 +18,22 @@ import modelo.libro;
  * @author Migue Galdámez
  */
 public class libroDAO {
-    conexion cn=new conexion();
+
+    conexion cn = new conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    libro p=new libro();
-    
+    libro p = new libro();
+
     public List listar() {
-        ArrayList<libro>list=new ArrayList<>();
-        String sql="select * from libro";
+        ArrayList<libro> list = new ArrayList<>();
+        String sql = "select * from libro";
         try {
-            con=cn.getConnection();
-            ps=con.prepareStatement(sql);
-            rs=ps.executeQuery();
-            while(rs.next()){
-                libro per=new libro();
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                libro per = new libro();
                 per.setId(rs.getInt("Id"));
                 per.setAutor(rs.getString("autor"));
                 per.setEditorial(rs.getString("editorial"));
@@ -44,19 +45,20 @@ public class libroDAO {
         }
         return list;
     }
+
     public libro list(int id) {
-        String sql="select * from libro where Id="+id;
+        String sql = "select * from libro where Id=" + id;
         try {
-            con=cn.getConnection();
-            ps=con.prepareStatement(sql);
-            rs=ps.executeQuery();
-            while(rs.next()){                
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 p.setId(rs.getInt("Id"));
                 p.setEditorial(rs.getString("editorial"));
                 p.setAutor(rs.getString("autor"));
                 p.setIsbn(rs.getString("isbn"));
                 p.setTitulo(rs.getString("titulo"));
-                
+
             }
         } catch (Exception e) {
         }
@@ -64,21 +66,21 @@ public class libroDAO {
     }
 
     public boolean add(libro per) {
-       String sql="insert into libro(isbn,titulo,autor,editorial)values('"+per.getIsbn()+"','"+per.getTitulo()+"','"+per.getAutor()+"','"+per.getEditorial()+"')";
+        String sql = "insert into libro(isbn,titulo,autor,editorial)values('" + per.getIsbn() + "','" + per.getTitulo() + "','" + per.getAutor() + "','" + per.getEditorial() + "')";
         try {
-            con=cn.getConnection();
-            ps=con.prepareStatement(sql);
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
         }
-       return false;
+        return false;
     }
 
     public boolean edit(libro per) {
-        String sql="update libro set isbn='"+per.getIsbn()+"',titulo='"+per.getTitulo()+"',autor='"+per.getAutor()+"',editorial='"+per.getEditorial()+"'where Id="+per.getId();
+        String sql = "update libro set isbn='" + per.getIsbn() + "',titulo='" + per.getTitulo() + "',autor='" + per.getAutor() + "',editorial='" + per.getEditorial() + "'where Id=" + per.getId();
         try {
-            con=cn.getConnection();
-            ps=con.prepareStatement(sql);
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -86,10 +88,10 @@ public class libroDAO {
     }
 
     public boolean eliminar(int id) {
-        String sql="delete from libro where Id="+id;
+        String sql = "delete from libro where Id=" + id;
         try {
-            con=cn.getConnection();
-            ps=con.prepareStatement(sql);
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
         }

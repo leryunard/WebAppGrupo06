@@ -10,6 +10,7 @@ package modelo;
  * @author Migue Galdámez
  */
 public class libro {
+
     int id;
     String isbn;
     String titulo;
@@ -19,14 +20,13 @@ public class libro {
     public libro() {
     }
 
-    
     public libro(String isbn, String titulo, String autor, String editorial) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
         this.editorial = editorial;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -66,6 +66,5 @@ public class libro {
     public void setEditorial(String editorial) {
         this.editorial = editorial;
     }
-    
-    
+
 }
