@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/src/java/modelo/libro.java</file>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/src/java/modeloDAO/libroDAO.java</file>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/src/java/modelo/login.java</file>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/src/java/modeloDAO/loginDAO.java</file>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/src/java/config/conexion.java</file>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/web/vistas/login.jsp</file>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/web/index.jsp</file>
+            <file>file:/C:/Users/Carlos%20Rafaelano/Desktop/WebAppGrupo06/src/java/controlador/controlador.java</file>
+        </group>
     </open-files>
 </project-private>

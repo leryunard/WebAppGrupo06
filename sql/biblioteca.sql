@@ -1,4 +1,4 @@
-﻿# SQL-Front 5.1  (Build 4.16)
+# SQL-Front 5.1  (Build 4.16)
 
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE */;
 /*!40101 SET SQL_MODE='NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */;
@@ -30,7 +30,7 @@ CREATE TABLE `libro` (
   `autor` varchar(255) DEFAULT NULL,
   `editorial` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 #
 # Dumping data for table libro
@@ -41,6 +41,33 @@ LOCK TABLES `libro` WRITE;
 INSERT INTO `libro` VALUES (1,'9781591167532','Hunter x Hunter, Vol. 1','Yoshihiro Togashi','VIZ Media LLC');
 INSERT INTO `libro` VALUES (2,'9781421569062','Monster: The Perfect Edition, Vol. 1','Naoki Urasawa','VIZ Media LLC');
 /*!40000 ALTER TABLE `libro` ENABLE KEYS */;
+UNLOCK TABLES;
+
+#
+# Source for table usuarios
+#
+
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(255) DEFAULT NULL,
+  `clave` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `nivel` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+#
+# Dumping data for table usuarios
+#
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'papu123','123','Mario Pablo',1);
+INSERT INTO `usuarios` VALUES (2,'admin1','admin','Carlos',2);
+INSERT INTO `usuarios` VALUES (3,'admin2','admin2','Leonardo',1);
+INSERT INTO `usuarios` VALUES (4,'xd123','321','Migue',2);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
