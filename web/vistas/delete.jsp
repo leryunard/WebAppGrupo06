@@ -15,6 +15,8 @@
 
         <title>JSP Page</title>
     </head>
+    <div class="d-flex justify-content-end">        
+    </div>
     <body>
           
           <div class="container mt-5">
