@@ -10,37 +10,33 @@
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
 
-# Host: localhost:3308    Database: biblioteca
+# Host: localhost    Database: biblioteca
 # ------------------------------------------------------
 # Server version 5.5.5-10.1.13-MariaDB
 
-DROP DATABASE IF EXISTS `biblioteca`;
-CREATE DATABASE `biblioteca` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `biblioteca`;
-
 #
-# Source for table libro
+# Source for table usuarios
 #
 
-DROP TABLE IF EXISTS `libro`;
-CREATE TABLE `libro` (
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `isbn` varchar(255) DEFAULT NULL,
-  `titulo` varchar(255) DEFAULT NULL,
-  `autor` varchar(255) DEFAULT NULL,
-  `editorial` varchar(255) DEFAULT NULL,
+  `login` varchar(255) DEFAULT NULL,
+  `clave` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `nivel` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 #
-# Dumping data for table libro
+# Dumping data for table usuarios
 #
 
-LOCK TABLES `libro` WRITE;
-/*!40000 ALTER TABLE `libro` DISABLE KEYS */;
-INSERT INTO `libro` VALUES (1,'9781591167532','Hunter x Hunter, Vol. 1','Yoshihiro Togashi','VIZ Media LLC');
-INSERT INTO `libro` VALUES (2,'9781421569062','Monster: The Perfect Edition, Vol. 1','Naoki Urasawa','VIZ Media LLC');
-/*!40000 ALTER TABLE `libro` ENABLE KEYS */;
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (2,'login','admin','kevin',1);
+INSERT INTO `usuarios` VALUES (1,'test','admin','alonso',2);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
