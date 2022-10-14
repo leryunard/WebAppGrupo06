@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/web/vistas/frmupdate.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/web/vistas/update.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/web/vistas/error.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/src/java/controlador/controlador.java</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/web/vistas/login.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/web/vistas/insert.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/web/vistas/logout.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/src/java/modeloDAO/loginDAO.java</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/src/java/modeloDAO/libroDAO.java</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/web/index.jsp</file>
+            <file>file:/C:/Users/USER/Desktop/WebAppGrupo06-main/src/java/modelo/libro.java</file>
+        </group>
     </open-files>
 </project-private>

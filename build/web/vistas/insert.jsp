@@ -21,6 +21,7 @@
             Editorial <b><%= request.getParameter("txtEditorial") %></b><br>
             Isbn <b><%= request.getParameter("txtIsbn") %></b><br>
             <a class="btn btn-success btn-sm" href="controlador?accion=listar">Regresar</a>
+            
         </div>
       
     </body>

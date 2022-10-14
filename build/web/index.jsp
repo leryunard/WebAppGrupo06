@@ -26,14 +26,11 @@
                     if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
                         usuario = sesion.getAttribute("user").toString();
                         nivel = sesion.getAttribute("nivel").toString();
-                        out.print("<a href='/WebAppGrupo6/vistas/login.jsp?cerrar=true'><h5>" + usuario + " Cerrar Sesion</h5></a>");
+                        out.print("<h5>" + usuario + " Bienvenido</h5>");
                     } else {
                         nivel = "0";
+                        out.print("<a href='/WebAppGrupo6/vistas/login.jsp?cerrar=true'><h2> Iniciar Sesion</h2></a>");
                     }
-                    //Para mandar al login
-//                    else {
-//                        out.print("<script>location.replace('/WebAppGrupo6/vistas/login.jsp');</script>");
-//                    }
                 %>           
             </div>
 
@@ -63,15 +60,10 @@
                                     <input class="btn btn-primary float-end btn-sm" type="submit" name="accion" value="Agregar">
                                 </div>
                             </div>
-
-
-
-
-
                         </form>
                     </div>
                 </div>
-
+                
                 <table class="table table-bordered mt-4">
                     <thead>
                         <tr>
@@ -107,6 +99,10 @@
                         <%}%>
                     </tbody>
                 </table>
+                    
             </div>
+                    <div>
+                        <a class="btn btn-warning btn-sm" href="controlador?accion=cerrar">Cerrar Sesion</a>
+                    </div>
     </body>
 </html>

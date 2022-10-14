@@ -26,6 +26,8 @@ public class controlador  extends HttpServlet{
     String insert="vistas/insert.jsp";
     String update="vistas/update.jsp";
     String delete="vistas/delete.jsp";
+    String error = "vistas/error.jsp";
+    String cerrar = "vistas/logout.jsp";
     libro p=new libro();
     libroDAO dao=new libroDAO();
     int id;
@@ -58,12 +60,19 @@ public class controlador  extends HttpServlet{
             acceso=add;
         }
         else if(action.equalsIgnoreCase("Agregar")){
-            p.setAutor(request.getParameter("txtAutor"));
+            if(request.getParameter("txtAutor") == "" || request.getParameter("txtEditorial") == "" || request.getParameter("txtIsbn") == "" || request.getParameter("txtTitulo") ==""){
+                
+                acceso = error;
+            }
+            else{
+             p.setAutor(request.getParameter("txtAutor"));
             p.setEditorial(request.getParameter("txtEditorial"));
             p.setIsbn(request.getParameter("txtIsbn"));
             p.setTitulo(request.getParameter("txtTitulo"));
             dao.add(p);
             acceso=insert;
+            }
+           
         }
         else if(action.equalsIgnoreCase("editar")){
             request.setAttribute("idper",request.getParameter("id"));
@@ -89,6 +98,9 @@ public class controlador  extends HttpServlet{
             p.setId(id);
             dao.eliminar(id);
             acceso=delete;
+        }
+        else if(action.equalsIgnoreCase("cerrar")){
+           acceso =cerrar;
         }
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response);
