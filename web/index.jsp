@@ -26,7 +26,7 @@
                     if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
                         usuario = sesion.getAttribute("user").toString();
                         nivel = sesion.getAttribute("nivel").toString();
-                        out.print("<a href='/WebAppGrupo6/vistas/login.jsp?cerrar=true'><h5>" + usuario + " Cerrar Sesion</h5></a>");
+                        out.print("<a href='/WebAppGrupo6/vistas/login.jsp?cerrar=true'><h5>" + usuario + " / Cerrar Sesion</h5></a>");
                     } else {
                         nivel = "0";
                     }

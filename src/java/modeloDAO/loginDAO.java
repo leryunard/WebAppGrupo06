@@ -28,10 +28,10 @@ public class loginDAO {
     login log = new login();
 
 //loguear al usuario
-    public int loguear(String log, String pass) {
+    public int loguear(String nombre, String pass) {
         int cont = 0;
         int nivel = 0;
-        String sql = "select nivel from usuarios where login='" + log + "' and clave='" + pass + "'";
+        String sql = "select nivel from usuarios where nombre='" + nombre + "' and clave='" + pass + "'";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
