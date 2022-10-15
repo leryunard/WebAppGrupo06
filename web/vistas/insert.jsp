@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container mt-5">
-            <h1>Realizado, se ha insertado el registro!</h1>
+            <h1>Realizado, ¡se ha insertado el registro!</h1>
             Nombre Autor <b><%= request.getParameter("txtAutor") %></b><br>
             Titulo <b><%= request.getParameter("txtTitulo") %></b><br>
             Editorial <b><%= request.getParameter("txtEditorial") %></b><br>

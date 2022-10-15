@@ -15,8 +15,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <title>JSP Page</title>
+        
     </head>
     <body>
+         <div class="container mt-5">
+             
+         </div>
         <div class="container mt-5">
             <div class="d-flex justify-content-end">
                 <%
@@ -26,9 +30,10 @@
                     if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
                         usuario = sesion.getAttribute("user").toString();
                         nivel = sesion.getAttribute("nivel").toString();
-                        out.print("<a href='/WebAppGrupo6/vistas/login.jsp?cerrar=true'><h5>" + usuario + " / Cerrar Sesion</h5></a>");
+                        out.print("<a><h5>Bienvenido, " + usuario + "</h5></a>");
                     } else {
                         nivel = "0";
+                        out.print("<a href='/WebAppGrupo6/vistas/login.jsp'><h5>Iniciar sesión</h5></a>");
                     }
                     //Para mandar al login
 //                    else {
@@ -56,7 +61,7 @@
                                     <input class="form-control" type="text" name="txtTitulo">
                                 </div>
                                 <div class="col">
-                                    <label for="">Isbn</label>
+                                    <label for="">ISBN</label>
                                     <input class="form-control" type="text" name="txtIsbn">
                                 </div>
                                 <div class="col col-12 mt-2">
@@ -108,5 +113,8 @@
                     </tbody>
                 </table>
             </div>
+                     <div>
+                        <a class="btn btn-warning btn-sm" href="controlador?accion=cerrar">Cerrar Sesión</a>
+                    </div>
     </body>
 </html>
