@@ -40,7 +40,8 @@ public class loginDAO {
                 nivel = rs.getInt("nivel");
             }
             con.close();
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
         }
         return nivel;
     }

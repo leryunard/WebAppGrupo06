@@ -12,8 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.libro;
-import modeloDAO.libroDAO;
+import javax.servlet.http.HttpSession;
+import modelo.*;
+import modeloDAO.*;
 
 /**
  *
@@ -26,6 +27,8 @@ public class controlador  extends HttpServlet{
     String insert="vistas/insert.jsp";
     String update="vistas/update.jsp";
     String delete="vistas/delete.jsp";
+    String error = "vistas/error.jsp";
+    String cerrar = "vistas/logout.jsp";
     libro p=new libro();
     libroDAO dao=new libroDAO();
     int id;
@@ -58,26 +61,73 @@ public class controlador  extends HttpServlet{
             acceso=add;
         }
         else if(action.equalsIgnoreCase("Agregar")){
-            p.setAutor(request.getParameter("txtAutor"));
-            p.setEditorial(request.getParameter("txtEditorial"));
-            p.setIsbn(request.getParameter("txtIsbn"));
-            p.setTitulo(request.getParameter("txtTitulo"));
-            dao.add(p);
-            acceso=insert;
+            if(request.getParameter("txtAutor") == "" || request.getParameter("txtEditorial") == "" || request.getParameter("txtIsbn") == "" || request.getParameter("txtTitulo") ==""){
+                
+                acceso = error;
+            }
+            else{
+                loginDAO log = new loginDAO();
+                if (request.getParameter("btnIngresar") != null) {
+                    String nombre = request.getParameter("txtUser");
+                    String contra = request.getParameter("txtPass");
+                    HttpSession sesion = request.getSession();
+                    switch (log.loguear(nombre, contra)) {
+                    case 1:
+                        sesion.setAttribute("user", nombre);
+                        sesion.setAttribute("nivel", "1");
+                        response.sendRedirect("/WebAppGrupo6/insert.jsp");
+                                    break;
+                    case 2:
+                        sesion.setAttribute("user", nombre);
+                        sesion.setAttribute("nivel", "2");
+                        response.sendRedirect("/WebAppGrupo6/error.jsp");
+                        break;
+                    }
+                }
+                p.setAutor(request.getParameter("txtAutor"));
+                p.setEditorial(request.getParameter("txtEditorial"));
+                p.setIsbn(request.getParameter("txtIsbn"));
+                p.setTitulo(request.getParameter("txtTitulo"));
+                dao.add(p);
+                acceso=insert; 
+            }           
         }
         else if(action.equalsIgnoreCase("editar")){
             request.setAttribute("idper",request.getParameter("id"));
             acceso=edit;
         }
         else if(action.equalsIgnoreCase("Actualizar")){
-            id=Integer.parseInt(request.getParameter("txtId"));
-            p.setId(id);
-            p.setAutor(request.getParameter("txtAutor"));
-            p.setIsbn(request.getParameter("txtIsbn"));
-            p.setTitulo(request.getParameter("txtTitulo"));
-            p.setEditorial(request.getParameter("txtEditorial"));
-            dao.edit(p);
-            acceso=update;
+            if(request.getParameter("txtAutor") == "" || request.getParameter("txtEditorial") == "" || request.getParameter("txtIsbn") == "" || request.getParameter("txtTitulo") ==""){
+                
+                acceso = error;
+            }
+              else{
+                loginDAO log = new loginDAO();
+                if (request.getParameter("btnIngresar") != null) {
+                String nombre = request.getParameter("txtUser");
+                String contra = request.getParameter("txtPass");
+                HttpSession sesion = request.getSession();
+                switch (log.loguear(nombre, contra)) {
+                case 1:
+                    sesion.setAttribute("user", nombre);
+                    sesion.setAttribute("nivel", "1");
+                    acceso=error;
+                    break;
+                case 2:
+                    sesion.setAttribute("user", nombre);
+                    sesion.setAttribute("nivel", "2");
+                    id=Integer.parseInt(request.getParameter("txtId"));
+                    p.setId(id);
+                    p.setAutor(request.getParameter("txtAutor"));
+                    p.setIsbn(request.getParameter("txtIsbn")); 
+                    p.setTitulo(request.getParameter("txtTitulo"));
+                    p.setEditorial(request.getParameter("txtEditorial"));
+                    dao.edit(p);
+                    acceso=update;
+                    break;
+                }
+                }    
+            }
         }
         else if(action.equalsIgnoreCase("eliminar")){
             id=Integer.parseInt(request.getParameter("id"));
@@ -89,6 +139,9 @@ public class controlador  extends HttpServlet{
             p.setId(id);
             dao.eliminar(id);
             acceso=delete;
+        }
+         else if(action.equalsIgnoreCase("cerrar")){
+           acceso =cerrar;
         }
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response);

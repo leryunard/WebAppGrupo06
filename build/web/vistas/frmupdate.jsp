@@ -4,9 +4,11 @@
     Author     : Migue Galdámez
 --%>
 
+<%@page import="modeloDAO.loginDAO"%>
 <%@page import="modelo.libro"%>
 <%@page import="modeloDAO.libroDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +17,7 @@
 
         <title>JSP Page</title>
     </head>
-    <body>
+    <body>            
            <%
               libroDAO dao=new libroDAO();
               int id=Integer.parseInt((String)request.getAttribute("idper"));
