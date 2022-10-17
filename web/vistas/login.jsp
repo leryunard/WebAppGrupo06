@@ -20,7 +20,7 @@
             <div class="card text-center">
                 <div class="card-body">
                     <!-- Captura de datos del usuario-->
-                    <form action="validar.jsp" method="POST">
+                    <form action="vistas/validar.jsp" method="POST">
                         <div class="row">
                             <div class="col">
                                 <label for="txtUser">Usuario</label>
@@ -41,8 +41,10 @@
                     </form>
                 
                 </div>
+                <div class="col">  </div>
+       <a class="btn btn-success btn-sm" href="controlador?accion=listar">Regresar a página principal</a>
             </div>
+            
         </div>
-
     </body>
 </html>

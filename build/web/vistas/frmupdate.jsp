@@ -3,10 +3,11 @@
     Created on : 09-28-2022, 10:13:45 PM
     Author     : Migue Galdámez
 --%>
-
+<%@page import="modeloDAO.loginDAO"%>
 <%@page import="modelo.libro"%>
 <%@page import="modeloDAO.libroDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
     <head>

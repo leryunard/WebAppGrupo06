@@ -3,6 +3,10 @@
     Created on : Oct 13, 2022, 11:50:01 PM
     Author     : kevin
 --%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="modelo.libro"%>
+<%@page import="modeloDAO.libroDAO"%>
 <%@page import="modeloDAO.loginDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page session="true"%>
@@ -34,7 +38,7 @@
                                     break;
                                 default:
                                     out.write("<div class='mt-3 alert alert-danger' role='alert'> Usuario o contraseña incorrectos. ¡Intente nuevamente! </div>");
-                                    out.print("<a href='/WebAppGrupo6/vistas/login.jsp'><h5>Presiona aquí para regresar</h5></a>");
+                                    out.print("<a href='/WebAppGrupo6/index.jsp'><h5>Presiona aquí para regresar</h5></a>");
                                     break;
                             }
                         }

@@ -28,6 +28,7 @@ public class controlador  extends HttpServlet{
     String delete="vistas/delete.jsp";
     String error = "vistas/error.jsp";
     String cerrar = "vistas/logout.jsp";
+    String login = "vistas/login.jsp";
     libro p=new libro();
     libroDAO dao=new libroDAO();
     int id;
@@ -108,6 +109,12 @@ public class controlador  extends HttpServlet{
          else if(action.equalsIgnoreCase("cerrar")){
            acceso =cerrar;
         }
+        
+         else if(action.equalsIgnoreCase("login")){
+           acceso =login;
+        }
+        
+   
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }

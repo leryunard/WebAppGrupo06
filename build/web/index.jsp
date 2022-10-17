@@ -33,7 +33,7 @@
                         out.print("<a><h5>Bienvenido, " + usuario + "</h5></a>");
                     } else {
                         nivel = "0";
-                        out.print("<a href='/WebAppGrupo6/vistas/login.jsp'><h5>Iniciar sesión</h5></a>");
+                        out.print("<a href='controlador?accion=login'><h5>Iniciar sesión</h5></a>");
                     }
                     //Para mandar al login
 //                    else {

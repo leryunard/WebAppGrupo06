@@ -3,7 +3,8 @@
     Created on : 09-28-2022, 10:29:11 PM
     Author     : Migue Galdámez
 --%>
-
+<%@page import="modeloDAO.loginDAO"%>
+<%@page session="true"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
