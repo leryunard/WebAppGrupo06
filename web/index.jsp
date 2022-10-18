@@ -96,7 +96,7 @@
                             <th class="text-center">Autor</th>
                             <th class="text-center">Editorial</th>
                             <th class="text-center">Titulo</th>
-                            <th class="text-center">isbn</th>
+                            <th class="text-center">ISBN</th>
                          <% 
                     nivel = "0";
                       if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
