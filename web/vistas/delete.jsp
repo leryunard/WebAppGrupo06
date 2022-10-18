@@ -18,7 +18,7 @@
     <body>
           
           <div class="container mt-5">
-            <h1>Realizado, se ha Actualizado el registro!</h1>
+            <h1>Realizado, se ha Eliminado el registro!</h1>
             Nombre Autor <b><%= request.getAttribute("txtAutor") %></b><br>
             Titulo <b><%= request.getAttribute("txtTitulo") %></b><br>
             Editorial <b><%= request.getAttribute("txtEditorial") %></b><br>

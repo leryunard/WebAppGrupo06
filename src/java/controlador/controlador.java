@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.libro;
 import modeloDAO.libroDAO;
 
@@ -63,48 +64,92 @@ public class controlador  extends HttpServlet{
         else if(action.equalsIgnoreCase("Agregar")){
             if(request.getParameter("txtAutor") == "" || request.getParameter("txtEditorial") == "" || request.getParameter("txtIsbn") == "" || request.getParameter("txtTitulo") ==""){
                 
+                 request.setAttribute("error","Error ¡Los Campos no pueden estar vacíos! ");
                 acceso = error;
+                
             }
             else{
-            p.setAutor(request.getParameter("txtAutor"));
-            p.setEditorial(request.getParameter("txtEditorial"));
-            p.setIsbn(request.getParameter("txtIsbn"));
-            p.setTitulo(request.getParameter("txtTitulo"));
-            dao.add(p);
-            acceso=insert;
+                 HttpSession sesion = request.getSession();
+                String nivel="0";;
+                if(sesion.getAttribute("nivel")!=null){
+                    nivel=sesion.getAttribute("nivel").toString();
+                }
+                if(nivel =="1"){
+                    p.setAutor(request.getParameter("txtAutor"));
+                    p.setEditorial(request.getParameter("txtEditorial"));
+                    p.setIsbn(request.getParameter("txtIsbn"));
+                    p.setTitulo(request.getParameter("txtTitulo"));
+                    dao.add(p);
+                    acceso=insert;
+                } else{
+                     request.setAttribute("error","Error ¡No tienes permisos para insertar! ");
+                    acceso = error;
+                }
+            
            } 
             
         }
         else if(action.equalsIgnoreCase("editar")){
-            request.setAttribute("idper",request.getParameter("id"));
-            acceso=edit;
+             HttpSession sesion = request.getSession();
+               String nivel="0";;
+                if(sesion.getAttribute("nivel")!=null){
+                    nivel=sesion.getAttribute("nivel").toString();
+                }
+                if(nivel =="2"){
+                    request.setAttribute("idper",request.getParameter("id"));
+                    acceso=edit;
+                    }else{
+                     request.setAttribute("error","Error ¡No tienes permisos para actualizar! ");
+                    acceso = error;
+                }
         }
         else if(action.equalsIgnoreCase("Actualizar")){
             if(request.getParameter("txtAutor") == "" || request.getParameter("txtEditorial") == "" || request.getParameter("txtIsbn") == "" || request.getParameter("txtTitulo") ==""){
-                
+                request.setAttribute("error","Error ¡Los Campos no pueden estar vacíos! ");
                 acceso = error;
             }
               else{
-            id=Integer.parseInt(request.getParameter("txtId"));
-            p.setId(id);
-            p.setAutor(request.getParameter("txtAutor"));
-            p.setIsbn(request.getParameter("txtIsbn"));
-            p.setTitulo(request.getParameter("txtTitulo"));
-            p.setEditorial(request.getParameter("txtEditorial"));
-            dao.edit(p);
-            acceso=update;
+                HttpSession sesion = request.getSession();
+                 String nivel="0";;
+                if(sesion.getAttribute("nivel")!=null){
+                    nivel=sesion.getAttribute("nivel").toString();
+                }
+                if(nivel =="2"){
+                    id=Integer.parseInt(request.getParameter("txtId"));
+                    p.setId(id);
+                    p.setAutor(request.getParameter("txtAutor"));
+                    p.setIsbn(request.getParameter("txtIsbn"));
+                    p.setTitulo(request.getParameter("txtTitulo"));
+                    p.setEditorial(request.getParameter("txtEditorial"));
+                    dao.edit(p);
+                    acceso=update;
+                }else{
+                     request.setAttribute("error","Error ¡No tienes permisos para actualizar! ");
+                    acceso = error;
+                }
+             
              }
         }
         else if(action.equalsIgnoreCase("eliminar")){
-            id=Integer.parseInt(request.getParameter("id"));
-            libro l=(libro)dao.list(id);
-            request.setAttribute("txtAutor",l.getAutor());
-            request.setAttribute("txtTitulo",l.getTitulo());
-            request.setAttribute("txtIsbn",l.getIsbn());
-            request.setAttribute("txtEditorial",l.getEditorial());
-            p.setId(id);
-            dao.eliminar(id);
-            acceso=delete;
+               HttpSession sesion = request.getSession();
+                String nivel="0";;
+                if(sesion.getAttribute("nivel")!=null){
+                    nivel=sesion.getAttribute("nivel").toString();
+                }
+                if(nivel =="2"){
+                    id=Integer.parseInt(request.getParameter("id"));
+                    libro l=(libro)dao.list(id);
+                    request.setAttribute("txtAutor",l.getAutor());
+                    request.setAttribute("txtTitulo",l.getTitulo());
+                    request.setAttribute("txtIsbn",l.getIsbn());
+                    request.setAttribute("txtEditorial",l.getEditorial());
+                    p.setId(id);
+                    dao.eliminar(id);
+                    acceso=delete;
+                }else{
+                request.setAttribute("error","Error ¡No tienes permisos para Eliminar! ");
+               acceso = error;
+           }
         }
          else if(action.equalsIgnoreCase("cerrar")){
            acceso =cerrar;
@@ -113,6 +158,7 @@ public class controlador  extends HttpServlet{
          else if(action.equalsIgnoreCase("login")){
            acceso =login;
         }
+   
         
    
         RequestDispatcher vista=request.getRequestDispatcher(acceso);

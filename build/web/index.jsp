@@ -44,7 +44,16 @@
 
             <div class="container mt-5">
                 <h1>Lista de Libros</h1>
-                <div class="card">
+               
+                       <% 
+                    nivel = "0";
+                      if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
+                         nivel = sesion.getAttribute("nivel").toString();
+                      }
+                    
+                     if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null && nivel =="1") {
+                         %>
+                          <div class="card">
                     <div class="card-body">
                         <form action="controlador">
                             <div class="row">
@@ -74,8 +83,11 @@
 
 
                         </form>
-                    </div>
+                         </div>
                 </div>
+                          <% } 
+                %>
+                   
 
                 <table class="table table-bordered mt-4">
                     <thead>
@@ -85,7 +97,16 @@
                             <th class="text-center">Editorial</th>
                             <th class="text-center">Titulo</th>
                             <th class="text-center">isbn</th>
+                         <% 
+                    nivel = "0";
+                      if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
+                         nivel = sesion.getAttribute("nivel").toString();
+                      }
+                    
+                     if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null && nivel =="2") {
+                         %>
                             <th class="text-center">ACCIONES</th>
+                            <%}%>
                         </tr>
                     </thead>
                     <%
@@ -104,17 +125,29 @@
                             <td class="text-center"><%= per.getEditorial()%></td>
                             <td><%= per.getTitulo()%></td>
                             <td><%= per.getIsbn()%></td>
+                       <% 
+                    nivel = "0";
+                      if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
+                         nivel = sesion.getAttribute("nivel").toString();
+                      }
+                    
+                     if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null && nivel =="2") {
+                         %>
                             <td class="text-center">
                                 <a class="btn btn-warning btn-sm" href="controlador?accion=editar&id=<%= per.getId()%>">Actualizar</a>
                                 <a class="btn btn-danger btn-sm" href="controlador?accion=eliminar&id=<%= per.getId()%>">Borrar</a>
                             </td>
                         </tr>
+                        
+                          <% } 
+                    %>
                         <%}%>
                     </tbody>
                 </table>
-            </div>
-                     <div>
-                        <a class="btn btn-warning btn-sm" href="controlador?accion=cerrar">Cerrar Sesión</a>
-                    </div>
+            </div> <%
+                     if (sesion.getAttribute("user") != null && sesion.getAttribute("nivel") != null) {
+                            out.print("<div><a class='btn btn-warning btn-sm' href='controlador?accion=cerrar'>Cerrar Sesión</a></div}");
+                     }
+                                %>  
     </body>
 </html>

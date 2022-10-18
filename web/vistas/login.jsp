@@ -44,6 +44,24 @@
                 <div class="col">  </div>
        <a class="btn btn-success btn-sm" href="controlador?accion=listar">Regresar a página principal</a>
             </div>
+             <h3 class="mt-2"> Usuarios de Prueba  </h3>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">admin1</div>
+                    admin
+                  </div>
+                  <span class="badge bg-primary rounded-pill">Nivel 2</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                    <div class="fw-bold">admin2</div>
+                    admin2
+                  </div>
+                  <span class="badge bg-primary rounded-pill">Nivel 1</span>
+                </li>
+
+              </ol>
             
         </div>
     </body>
